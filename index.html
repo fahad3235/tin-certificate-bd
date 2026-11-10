@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>e-TIN Guide BD — Bangladesh e-TIN Certificate Guide</title>
+<meta name="description" content="Bangladesh e-TIN guide: step-by-step registration guides, document checklists, do-I-need-a-TIN check, TIN format checker and quiz. Bilingual English / বাংলা, fully offline.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <div>
+      <h1 id="title" data-i18n="appTitle">e-TIN Guide BD</h1>
+      <p class="tagline" data-i18n="tagline">Bangladesh e-TIN made simple — steps, documents, do-I-need-it check, TIN checker and a quiz. Fully offline.</p>
+    </div>
+    <button id="langBtn" type="button" class="btn lang">বাংলা</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button id="tabbtn-facts" type="button" role="tab" class="tab active" data-i18n="tabFacts">Facts</button>
+    <button id="tabbtn-guides" type="button" role="tab" class="tab" data-i18n="tabGuides">Guides</button>
+    <button id="tabbtn-checklists" type="button" role="tab" class="tab" data-i18n="tabChecklists">Documents</button>
+    <button id="tabbtn-needtin" type="button" role="tab" class="tab" data-i18n="tabNeedTin">Do I need one?</button>
+    <button id="tabbtn-quiz" type="button" role="tab" class="tab" data-i18n="tabQuiz">Quiz</button>
+    <button id="tabbtn-data" type="button" role="tab" class="tab" data-i18n="tabData">My data</button>
+  </nav>
+
+  <!-- FACTS -->
+  <section id="tab-facts" class="panel" aria-label="Facts">
+    <section class="facts-card" aria-label="Key facts">
+      <h2 data-i18n="factsTitle">Key facts</h2>
+      <div id="facts" class="facts"></div>
+    </section>
+    <div class="card">
+      <h2 data-i18n="whatTitle">What is an e-TIN?</h2>
+      <div id="whatText"></div>
+    </div>
+  </section>
+
+  <!-- GUIDES -->
+  <section id="tab-guides" class="panel" aria-label="Guides" hidden>
+    <h2 data-i18n="guidesTitle">Step-by-step guides</h2>
+    <p class="muted" data-i18n="guidesHint">Tick each step as you finish it — your progress is saved in this browser.</p>
+    <div id="guidesList"></div>
+  </section>
+
+  <!-- CHECKLISTS -->
+  <section id="tab-checklists" class="panel" aria-label="Documents" hidden>
+    <h2 data-i18n="checkTitle">Document checklists</h2>
+    <p class="muted" data-i18n="checkHint">Tick what you already have. The lists are saved in this browser.</p>
+    <div class="card">
+      <p><strong id="checkOverall"></strong></p>
+      <div class="progress"><div class="bar" id="checkOverallBar" style="width:0%"></div></div>
+    </div>
+    <div id="checkList"></div>
+  </section>
+
+  <!-- NEED A TIN? -->
+  <section id="tab-needtin" class="panel" aria-label="Do I need one?" hidden>
+    <div class="card">
+      <h2 data-i18n="needTitle">Do I need a TIN?</h2>
+      <p class="muted" data-i18n="needHint">Tick every situation that applies to you, then check. This is a guide, not legal advice — when in doubt, ask a tax professional.</p>
+      <div id="needList"></div>
+      <p><button id="needBtn" type="button" class="btn primary" data-i18n="needCheck">Check my need</button></p>
+      <div id="needResult" class="result" hidden></div>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="tinCheckTitle">Check a TIN number</h2>
+      <p class="muted" data-i18n="tinCheckHint">Enter a TIN to check its format. This checks the shape of the number only — it cannot confirm a TIN is real or whose it is. Only NBR can do that.</p>
+      <div class="form-grid">
+        <label><span data-i18n="tinCheckTitle">Check a TIN number</span>
+          <input id="tinInput" type="text" inputmode="numeric" autocomplete="off" data-i18n-ph="tinPlaceholder" placeholder="Enter a TIN, e.g. 123456789012">
+        </label>
+      </div>
+      <p><button id="tinBtn" type="button" class="btn primary" data-i18n="tinCheckBtn">Check format</button></p>
+      <div id="tinResult" class="result" hidden></div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="tab-quiz" class="panel" aria-label="Quiz" hidden>
+    <div class="card">
+      <h2 data-i18n="quizTitle">e-TIN quiz</h2>
+      <div id="quizBox"></div>
+    </div>
+  </section>
+
+  <!-- DATA -->
+  <section id="tab-data" class="panel" aria-label="My data" hidden>
+    <div class="card">
+      <h2 data-i18n="dataTitle">My data</h2>
+      <p class="muted" data-i18n="dataHint">Your guide progress, document checklists, need-check ticks and best quiz score live only in this browser. Export them to keep a backup.</p>
+      <div class="btn-row">
+        <button id="exportBtn" type="button" class="btn" data-i18n="exportBtn">Export my data</button>
+        <button id="importBtn" type="button" class="btn" data-i18n="importBtn">Import data</button>
+        <button id="eraseBtn" type="button" class="btn danger" data-i18n="eraseBtn">Erase all</button>
+        <input id="importFile" type="file" accept="application/json,.json" hidden>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p data-i18n="disclaimer">Unofficial learning guide, not a government publication. Steps and facts are reported figures checked on 2026-11-10 — verify on secure.incometax.gov.bd before you apply. Registration is free: never pay a broker, and never share your OTP or password with anyone.</p>
+  </footer>
+</main>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/logic.js"></script>
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
